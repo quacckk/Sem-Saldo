@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Rede Krill</title>
+</head>
+
+<body>
+    <h1>Sem Saldo</h1>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+        <!--<form v-on:submit.prevent="addProduct">
+            <p>Adicionar itens sem saldo</p>
+            <p>Nome do funcionario: <input type="text" required v-model="name"></p>
+            <p>Descricao do produto: <input type="text" required v-model="ProductDesc"></p>
+            <p>Gtin do produto: <input type="number" required v-model="ProductGtin"></p>
+            <p>Quantidade de caixas do produto: <input type="text" required v-model="ProductQtd"></p>
+            <p>Endereco do produto: <input type="text" required v-model="ProductEndereco"></p>
+        <button type="submit">Adicionar produto</button>
+        </form>
+        <div>
+            <p>Produtos sem saldo</p>
+            <ul>
+                <li v-for="product in SemSaldo">{{product.Name}},{{product.Descricao}},{{product.Gtin}},{{product.Endereco}}</li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    name: null,
+                    ProductDesc: null,
+                    ProductGtin: null,
+                    ProductQtd: null,
+                    ProductEndereco: null,
+                    SemSaldo: []
+                }
+            },
+
+            mounted(){
+                this.loadProduct()
+            },
+            methods: {
+                async loadProduct(){
+                    const response = await fetch("http://localhost:8080/api/semsaldo")
+                    this.SemSaldo = await response.json()
+                },
+                async addProduct() {
+                    const product = {
+                        Nome: this.name,
+                        Descricao: this.ProductDesc,
+                        Gtin: this.ProductGtin,
+                        Qtd: this.ProductQtd,
+                        Endereco: this.ProductEndereco
+                    }
+
+                    await fetch("http://localhost:8080/api/semsaldo",{
+                        method: "POST",
+                        headers: { "Content-Type": "application/json"},
+                        body: JSON.stringify(product)
+                    })
+                    this.nome = null
+                    this.ProductDesc = null
+                    this.ProductGtin = null
+                    this.ProductQtd = null
+                    this.ProductEndereco = null
+
+                    this.loadProduct()
+                }
+            }
+        })
+        app.mount('#app')
+    </script>-->
+</body>
+
+</html>
