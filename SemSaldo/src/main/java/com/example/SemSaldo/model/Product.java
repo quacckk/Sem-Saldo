@@ -1,5 +1,9 @@
 package com.example.SemSaldo.model;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Date;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -13,11 +17,13 @@ public class Product {
 	private Integer gtin;
 	private Integer qtd;
 	private String endereco;
+	private String situacao;
+	private LocalDate dataRegistro;
 
 	
 	public Product(){}
 	
-	public Product(Long id , String nome, String descricao, Integer gtin, Integer qtd, String endereco) {
+	public Product(Long id , String nome, String descricao, Integer gtin, Integer qtd, String endereco, String situacao, LocalDate date, LocalDate dataRegistro) {
 		
 		this.id = id;
 		this.nome = nome;
@@ -25,6 +31,8 @@ public class Product {
 		this.gtin = gtin;
 		this.qtd = qtd;
 		this.endereco = endereco;
+		this.situacao = situacao;
+		this.dataRegistro = dataRegistro;
 		
 		
 	}
@@ -75,6 +83,24 @@ public class Product {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
+
+	public String getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(String situacao) {
+		this.situacao = situacao;
+	}
+
+	public LocalDate getDataRegistro() {
+		return dataRegistro;
+	}
+	
+	@PrePersist
+	public void prePesist() {
+		this.dataRegistro = LocalDate.now();
+	}
+
 	
 	
 }
